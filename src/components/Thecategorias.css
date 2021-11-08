@@ -1,0 +1,22 @@
+.card-user{
+    width: 200px;
+    margin: 5px;
+    border: 1px dotted red;
+    padding: 10px
+    
+  }
+  .card-name{
+    text-align:center;
+    
+  }
+  .card-foto{
+    margin-bottom: -15px;
+    text-align:center;
+    
+  }
+  .card-foto > img{
+    width:180px;
+    height: 180px;
+    border-radius: 50%; 
+  }
+  
