@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ServiciosOfertados.css'
 import { servicios } from '../Data/DataServicios';
+// import Thecategorias from './Thecategorias';
 
 
 
@@ -24,7 +25,7 @@ const ServiciosOfertados =  props => {
   //     }},
 
   
-    const servicioAMostrar = servicios.filter((item)=>
+  const servicioAMostrar = servicios.filter((item)=>
       item.servicio.categoria === props.nombreCategoria
     );//filtro para solo mostrar segun categoria
 

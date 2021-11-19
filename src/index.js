@@ -1,37 +1,46 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Thecategorias from './components/Thecategorias';
-import ServiciosOfertados from './components/ServiciosOfertados';
-import { categorias } from './Data/DataServicios';
+// import Thecategorias from './components/Thecategorias';
+// import ServiciosOfertados from './components/ServiciosOfertados';
+// import { categorias } from './Data/DataServicios';
+// import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { App } from './App';
+import {BrowserRouter} from "react-router-dom"
 
-
-const ConectorCategoriasServicios =  (props) => {
+//  const ConectorCategoriasServicios =  (props) => {
   
-  const [nombreCategoria, setnombreCategoria] = useState("kkk")
-  console.log(nombreCategoria)
-  const handleCategorias = (index)=>{
-    setnombreCategoria(categorias[index].categoria.nombre)
+//    const [nombreCategoria, setnombreCategoria] = useState("kkk")
+//    console.log(nombreCategoria)
+//    const handleCategorias = (index)=>{
+//      setnombreCategoria(categorias[index].categoria.nombre)
     
- } 
+//   } 
 
- return(
-  <>
-  <div className="seccion-categorias"> 
-  <Thecategorias onClick={(index)=>handleCategorias(index)}/>
-  </div>
+//   return(
+//    <Router>
+//    <div className="seccion-categorias"> 
+//    <Thecategorias onClick={(index)=>handleCategorias(index)}/>
+//    </div>
 
-  <div className="seccion-servicios">
-  <ServiciosOfertados nombreCategoria={nombreCategoria} />
-  </div>
-  </>
-  )
-};
+   
+//    {/* <Route path="/servicios" render={() => <div className="seccion-servicios">  <ServiciosOfertados nombreCategoria={nombreCategoria}  /> </div> } />  */}
+//    <Route path='/servicios' exact component={Thecategorias}/>
+
+   
+   
+//    </Router>
+   
+//    )
+//  };
 
 ReactDOM.render(
-  <ConectorCategoriasServicios/>,
+  <BrowserRouter>
+  <App/>
+  </BrowserRouter>,
+
   document.getElementById('root')
 );
 

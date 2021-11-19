@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Thecategorias.css'
 import { categorias } from '../Data/DataServicios';
+import {Link} from "react-router-dom"
 
 
 const Thecategorias = props => {
@@ -13,14 +14,19 @@ const Thecategorias = props => {
   //       descripcion:"Encuentre tutores en temas de Idiomas, Matematicas, Escritura, Programacion y        mucho mas"}
   //   }
   //   ]
-
+//  const [nombreCategoria, setnombreCategoria] = useState("kkk")
+//  const handleCategorias = (index)=>{
+//    setnombreCategoria(categorias[index].categoria.nombre)}
 
  const ciclarCategorias = categorias.map((item, index) => {
+  //props.onclic
   return (
     <div key={index} className="card-user">
       <div className="card-foto">
-        <img src={item.categoria.foto} alt="foto" title="Dar Click"
-        onClick={()=>props.onClick(index)} />
+       
+        <Link to="/servicios" > <img  src={item.categoria.foto} alt="foto" title="Dar Click" 
+        onClick={()=>props.onClick(index)} /> </Link> 
+        
       </div>
 
       <div className="card-name">
@@ -36,6 +42,7 @@ const Thecategorias = props => {
 
   return (
     ciclarCategorias
+    
 
   )
 };
