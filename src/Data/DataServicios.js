@@ -26,7 +26,7 @@ export const servicios= [
       precio: 60000 , // si aplica o no
       calificacion: "8/10",
       categoria: "Tutores",
-      celular: 666666,
+      celular: 3222750168,
       correo: "@hotmail.com",
       disponibilidadTiempo:"",
       ciudad: "",

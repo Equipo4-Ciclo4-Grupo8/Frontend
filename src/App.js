@@ -7,6 +7,8 @@ import './index.css';
 import Thecategorias from './components/Thecategorias';
 import ServiciosOfertados from './components/ServiciosOfertados';
 import { categorias } from './Data/DataServicios';
+import VerCategorias from './components/VerCategorias';
+
 
 
 
@@ -35,6 +37,10 @@ export const App = () => {
     
     <ServiciosOfertados nombreCategoria={nombreCategoria}  />
     </div>
+    </Route>
+
+    <Route path= "/vercategorias">
+    <VerCategorias  />
     </Route>
     </>
     
