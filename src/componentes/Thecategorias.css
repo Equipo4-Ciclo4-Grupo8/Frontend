@@ -1,5 +1,5 @@
 .card-user{
-    width: 200px;
+    width: 220px;
     margin: 5px;
     border: 1px dotted red;
     padding: 10px
@@ -8,10 +8,11 @@
   .card-name{
     text-align:center;
     
+    
   }
   .card-foto{
     text-align:center;
-    margin-bottom: -15px;  
+    margin-bottom: -5px;  
   }
   .card-foto>a>img{
     

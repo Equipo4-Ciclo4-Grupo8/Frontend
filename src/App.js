@@ -24,7 +24,7 @@ function App() {
       <br/>
       <br/>
       <br/>
-      <Footer/>
+      
 
       <Route exact path="/">
     <div className="seccion-categorias"> 
@@ -38,6 +38,8 @@ function App() {
     <ServiciosOfertados nombreCategoria={nombreCategoria}  />
     </div>
     </Route>
+    
+    <Footer/>
     
     </Router>
   );

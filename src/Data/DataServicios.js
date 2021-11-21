@@ -50,7 +50,7 @@ export const servicios= [
         }},
     {servicio:{
       foto: "https://placeimg.com/220/220/people",
-      nombre:"Daniel Felipe Echevarria Gonzales",
+      nombre:"Daniel Felipe Echevarria",
       profesion: "Experto Excel",
       precio: 20000 , // si aplica 
       calificacion: "9/10",
