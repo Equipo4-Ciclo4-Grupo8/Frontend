@@ -9,32 +9,8 @@ import reportWebVitals from './reportWebVitals';
 // import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { App } from './App';
 import {BrowserRouter} from "react-router-dom"
-
-//  const ConectorCategoriasServicios =  (props) => {
-  
-//    const [nombreCategoria, setnombreCategoria] = useState("kkk")
-//    console.log(nombreCategoria)
-//    const handleCategorias = (index)=>{
-//      setnombreCategoria(categorias[index].categoria.nombre)
-    
-//   } 
-
-//   return(
-//    <Router>
-//    <div className="seccion-categorias"> 
-//    <Thecategorias onClick={(index)=>handleCategorias(index)}/>
-//    </div>
-
-   
-//    {/* <Route path="/servicios" render={() => <div className="seccion-servicios">  <ServiciosOfertados nombreCategoria={nombreCategoria}  /> </div> } />  */}
-//    <Route path='/servicios' exact component={Thecategorias}/>
-
-   
-   
-//    </Router>
-   
-//    )
-//  };
+import Axios from 'axios'
+Axios.defaults.baseURL ='http://localhost:4000'
 
 ReactDOM.render(
   <BrowserRouter>

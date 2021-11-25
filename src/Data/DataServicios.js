@@ -1,22 +1,32 @@
-export const categorias= [
-    {categoria:{
-      foto: "https://i.ibb.co/2Pxd5G0/tutores.png",
-      nombre:"Tutores",
-      descripcion:"Idiomas, Matemáticas, Escritura, Programación",
-      estado: "Activo"
-    }},
-    {categoria:{
-        foto: "https://i.ibb.co/WHJxCvs/tecnicos.png",
-        nombre:"Técnicos",
-        descripcion:"Computadores, celulares, sistemas eléctricos,"
-      }},
-    {categoria:{
-        foto: "https://i.ibb.co/WHJxCvs/tecnicos.png",
-        nombre:"Entrenadores",
-        descripcion:"Gym, Boxeo, Pesas,"
-    }},  
+import  Axios  from "axios"
+import React, {useState, useEffect} from "react"
+
+export const Categorias=()=>{
+      const [categorias,setCategorias] = useState([])
+
+      //useEffect
+      useEffect(() => {
+      listarCategorias()   }, [])
+
+      //peticion GET, listamos categorias, en este caso solo las 'activas'
+      const listarCategorias= async()=>{
+      const respuesta = await Axios.get('/categoria/listActivos')
+      setCategorias(respuesta.data) }
+
+      //importante retornamos nuestra lista
+      return categorias
+      }
+// [{
+//        foto: "https://i.ibb.co/WHJxCvs/tecnicos.png",
+//        nombre:"Entrenadores",
+//        descripcion:"Gym, Boxeo, Pesas,",
+//        estado: "Activo"
+//    }}]
+
     
-    ]
+
+
+
 //data a usar seccion servicios ofertados
 export const servicios= [
     {servicio:{
@@ -25,7 +35,7 @@ export const servicios= [
       profesion:"Profesor de francés",
       precio: 60000 , // si aplica o no
       calificacion: "8/10",
-      categoria: "Tutores",
+      categoria: "TUTORES",
       celular: 3222750168,
       correo: "@hotmail.com",
       disponibilidadTiempo:"",
@@ -39,37 +49,37 @@ export const servicios= [
       profesion: "Profesor de ingles",
       precio: 50000 , // si aplica o no
       calificacion: "6/10",
-      categoria: "Tutores",
+      categoria: "TUTORES",
       celular: 666666,
       correo: "@hotmail.com",
       disponibilidadTiempo:"",
       ciudad: "",
       añosExperiencia: "",
       fotosExperiencia:""
-    
+
         }},
     {servicio:{
       foto: "https://placeimg.com/220/220/people",
       nombre:"Daniel Felipe Echevarria Gonzales",
       profesion: "Experto Excel",
-      precio: 20000 , // si aplica 
+      precio: 20000 , // si aplica
       calificacion: "9/10",
-      categoria: "Tutores",
+      categoria: "TUTORES",
       celular: 666666,
       correo: "@hotmail.com",
       disponibilidadTiempo:"",
       ciudad: "",
       añosExperiencia: "",
       fotosExperiencia:""
-        
-        }}, 
+
+        }},
     {servicio:{
       foto: "https://placeimg.com/220/220/people",
       nombre:"Felipe Gonzales",
       profesion: "Boxeador",
-      precio: 40000 , // si aplica 
+      precio: 40000 , // si aplica
       calificacion: "9/10",
-      categoria: "Entrenadores",
+      categoria: "ENTRENADORES",
       celular: 666666,
       correo: "@hotmail.com",
       disponibilidadTiempo:"",
@@ -81,9 +91,9 @@ export const servicios= [
         foto: "https://placeimg.com/220/220/people",
         nombre:"Juapis Gonzales",
         profesion: "Electricista",
-        precio: 20000 , // si aplica 
+        precio: 20000 , // si aplica
         calificacion: "6/10",
-        categoria: "Técnicos",
+        categoria: "TÉCNICOS",
         celular: 777777,
         correo: "@hotmail.com",
         disponibilidadTiempo:"",
@@ -91,5 +101,5 @@ export const servicios= [
         añosExperiencia: "",
         fotosExperiencia:""}
       },
-  
-   ]   
+
+   ]

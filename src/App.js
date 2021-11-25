@@ -6,7 +6,7 @@ import './index.css';
 // import reportWebVitals from './reportWebVitals';
 import Thecategorias from './components/Thecategorias';
 import ServiciosOfertados from './components/ServiciosOfertados';
-import { categorias } from './Data/DataServicios';
+import { Categorias } from './Data/DataServicios';
 import VerCategorias from './components/VerCategorias';
 
 
@@ -14,11 +14,14 @@ import VerCategorias from './components/VerCategorias';
 
 
 export const App = () => {
+
+  const categorias = Categorias()
+
   const [nombreCategoria, setnombreCategoria] = useState()
 
   console.log(nombreCategoria)
     const handleCategorias = (index)=>{
-      setnombreCategoria(categorias[index].categoria.nombre)
+      setnombreCategoria(categorias[index].nombre)
       }
 
     

@@ -26,7 +26,7 @@ const ServiciosOfertados =  props => {
 
   
   const servicioAMostrar = servicios.filter((item)=>
-      item.servicio.categoria === props.nombreCategoria
+      item.servicio.categoria === props.nombreCategoria //tener cuidado con las mayusculas y minusculas
     );//filtro para solo mostrar segun categoria
 
     const ciclarServicios = servicioAMostrar.map((item, index) => {
