@@ -17,7 +17,7 @@ export default function Editable() {
   //peticion GET, listamos categorias
   const listarCategorias= async()=>{ 
     // const token = sessionStorage.getItem('token') para la Auth
-    const respuesta = await Axios.get('/categoria/list').then(response=>{
+    const respuesta = await Axios.get('/categoria/listTodo').then(response=>{
       setData(response.data)
     }).catch(error=>{
       console.log(error.response)

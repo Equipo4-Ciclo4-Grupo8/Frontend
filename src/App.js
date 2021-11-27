@@ -30,14 +30,13 @@ export const App = () => {
    
     <>
     <Route exact path="/">
-    <div className="seccion-categorias"> 
+    
     <Thecategorias onClick={(index)=>handleCategorias(index)}/>
-    </div>
+    
     </Route>
     
     <Route path= "/servicios">
-    <div className="seccion-servicios">  
-    
+    <div className="seccion-servicios"> 
     <ServiciosOfertados nombreCategoria={nombreCategoria}  />
     </div>
     </Route>

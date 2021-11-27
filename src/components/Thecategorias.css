@@ -35,5 +35,11 @@
     border-radius: 50%; 
     
   }
+  .seccion-categorias{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
  
   
