@@ -1,45 +1,26 @@
-import React, {useState} from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Footer from './componentes/Footer';
-import Navegacion from './componentes/Navegacion';
-import Login from './componentes/Login';
-import Thecategorias from './componentes/Thecategorias';
-import ServiciosOfertados from './componentes/ServiciosOfertados';
-import { categorias } from './Data/DataServicios';
+import Footer from './components/Footer';
+import Navegacion from './components/Navegacion';
+import Login from './components/Login';
+import Pendon from './components/Pendon';
+import SupBarra from './components/SupBarra';
+import RegistroProv from './components/RegistroProv';
+import ViewLogin from './components/ViewLogin';
 
 function App() {
-
-  const [nombreCategoria, setnombreCategoria] = useState()
-
-  console.log(nombreCategoria)
-    const handleCategorias = (index)=>{
-      setnombreCategoria(categorias[index].categoria.nombre)
-      }
   return (
     <Router>
-      <Navegacion/>
-      <Route path='/' exact component={Login}/>
+      <SupBarra/>
+      <Pendon/>
+      <Route path='/Login' exact component={Login}/>
+      <br/>
+      <Route path='/RegistroProv' exact component={RegistroProv}/>
+      <br/>
+      <Route path='/ViewLogin' exact component={ViewLogin}/>
       <br/>
       <br/>
-      <br/>
-      <br/>
-      
-
-      <Route exact path="/">
-    <div className="seccion-categorias"> 
-    <Thecategorias onClick={(index)=>handleCategorias(index)}/>
-    </div>
-    </Route>
-    
-    <Route path= "/servicios">
-    <div className="seccion-servicios">  
-    
-    <ServiciosOfertados nombreCategoria={nombreCategoria}  />
-    </div>
-    </Route>
-    
-    <Footer/>
+      <Footer/>
     
     </Router>
   );
