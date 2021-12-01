@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Footer from './components/Footer';
@@ -7,8 +8,20 @@ import Pendon from './components/Pendon';
 import SupBarra from './components/SupBarra';
 import RegistroProv from './components/RegistroProv';
 import ViewLogin from './components/ViewLogin';
+import Thecategorias from './componentesServicios/Thecategorias';
+import ServiciosOfertados from './componentesServicios/ServiciosOfertados';
+import { Categorias } from './Data/DataServicios';
+import VerCategorias from './componentesServicios/VerCategorias';
+
 
 function App() {
+  const categorias = Categorias()
+  const [nombreCategoria, setnombreCategoria] = useState()
+  console.log(nombreCategoria)
+  const handleCategorias = (index)=>{
+    setnombreCategoria(categorias[index].nombre)
+      }
+
   return (
     <Router>
       <SupBarra/>
@@ -20,6 +33,22 @@ function App() {
       <Route path='/ViewLogin' exact component={ViewLogin}/>
       <br/>
       <br/>
+      
+      <Route exact path="/">
+      <Thecategorias onClick={(index)=>handleCategorias(index)}/>
+      </Route>
+      
+
+      <Route path= "/servicios">
+      <div className="seccion-servicios"> 
+      <ServiciosOfertados nombreCategoria={nombreCategoria}  />
+      </div>
+      </Route>
+
+      <Route path= "/vercategorias">
+      <VerCategorias  />
+      </Route>
+
       <Footer/>
     
     </Router>
