@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.seccion-servicios{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

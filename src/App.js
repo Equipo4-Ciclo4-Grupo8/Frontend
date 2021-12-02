@@ -1,57 +1,58 @@
 import React, {useState} from 'react'
-// import ReactDOM from 'react-dom';
-import {Link, Route, Switch} from "react-router-dom"
-import './index.css';
-
-// import reportWebVitals from './reportWebVitals';
-import Thecategorias from './components/Thecategorias';
-import ServiciosOfertados from './components/ServiciosOfertados';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './App.css';
+import Footer from './components/Footer';
+import Navegacion from './components/Navegacion';
+import Login from './components/Login';
+import Pendon from './components/Pendon';
+import SupBarra from './components/SupBarra';
+import RegistroProv from './components/RegistroProv';
+import ViewLogin from './components/ViewLogin';
+import Thecategorias from './componentesServicios/Thecategorias';
+import ServiciosOfertados from './componentesServicios/ServiciosOfertados';
 import { Categorias } from './Data/DataServicios';
-import VerCategorias from './components/VerCategorias';
+import VerCategorias from './componentesServicios/VerCategorias';
 
 
-
-
-
-export const App = () => {
-
+function App() {
   const categorias = Categorias()
-
   const [nombreCategoria, setnombreCategoria] = useState()
-
   console.log(nombreCategoria)
-    const handleCategorias = (index)=>{
-      setnombreCategoria(categorias[index].nombre)
+  const handleCategorias = (index)=>{
+    setnombreCategoria(categorias[index].nombre)
       }
 
+  return (
+    <Router>
+      <SupBarra/>
+      <Pendon/>
+      <Route path='/Login' exact component={Login}/>
+      <br/>
+      <Route path='/RegistroProv' exact component={RegistroProv}/>
+      <br/>
+      <Route path='/ViewLogin' exact component={ViewLogin}/>
+      <br/>
+      <br/>
+      
+      <Route exact path="/">
+      <Thecategorias onClick={(index)=>handleCategorias(index)}/>
+      </Route>
+      
+
+      <Route path= "/servicios">
+      <div className="seccion-servicios"> 
+      <ServiciosOfertados nombreCategoria={nombreCategoria}  />
+      </div>
+      </Route>
+
+      <Route path= "/vercategorias">
+      <VerCategorias  />
+      </Route>
+
+      <Footer/>
     
- 
-   return(
-   
-    <>
-    <Route exact path="/">
-    
-    <Thecategorias onClick={(index)=>handleCategorias(index)}/>
-    
-    </Route>
-    
-    <Route path= "/servicios">
-    <div className="seccion-servicios"> 
-    <ServiciosOfertados nombreCategoria={nombreCategoria}  />
-    </div>
-    </Route>
+    </Router>
+  );
+}
 
-    <Route path= "/vercategorias">
-    <VerCategorias  />
-    </Route>
-    </>
-    
-    )
-  };
-
-
-
-
-
-
-
+export default App;

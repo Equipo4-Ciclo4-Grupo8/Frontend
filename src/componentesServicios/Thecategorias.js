@@ -1,7 +1,7 @@
 import  Axios  from "axios"
 //import PropTypes from 'prop-types';
 import './Thecategorias.css'
-import { Categorias } from '../Data/DataServicios';
+//import { Categorias } from '../Data/DataServicios';
 import {Link} from "react-router-dom"
 import React, {useState, useEffect } from "react"
 import Swal from 'sweetalert2'
@@ -95,8 +95,8 @@ const Thecategorias = props => {
       </div> 
 
       <div className="card-name">
-        <h2>{item.nombre}</h2>
-        <p>{item.descripcion}  </p>
+        <h4>{item.nombre}</h4>
+        <p> {item.descripcion}  </p>
       </div>
 
     </div>
