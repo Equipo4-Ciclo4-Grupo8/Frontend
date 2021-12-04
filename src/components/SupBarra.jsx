@@ -65,8 +65,9 @@ export default function SupBarra() {
                                     <Nav.Link href="#action2">Equipo</Nav.Link>
                                     <Nav.Link href="#action2">Nosotros</Nav.Link>
                                     <NavDropdown title="Registros" id="offcanvasNavbarDropdown">
-                                        <NavDropdown.Item href="/RegistrarProveedor">Usuarios registrados</NavDropdown.Item>
-                                        <NavDropdown.Item href="/VerProveedor">Proovedores registrados</NavDropdown.Item>
+                                        <NavDropdown.Item href="/RegistrarProveedor">Usuarios registrados</NavDropdown.Item> 
+                                        <NavDropdown.Item href="/verproveedores">Proveedores registrados</NavDropdown.Item>
+                                        <NavDropdown.Item href="/vercategorias">Categorias registradas</NavDropdown.Item>
                                         <br />
                                     </NavDropdown>
                                 </Nav>

@@ -8,7 +8,7 @@ const Pendon = _ => {
     return (
     <div>
         <Figure>
-        <Figure.Image width={1349} height={300} src={Pendon1}/>
+        <Figure.Image  height={300} src={Pendon1}/>
         </Figure>
     </div>
     )

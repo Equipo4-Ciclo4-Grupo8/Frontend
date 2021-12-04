@@ -12,7 +12,9 @@ import Thecategorias from './componentesServicios/Thecategorias';
 import ServiciosOfertados from './componentesServicios/ServiciosOfertados';
 import { Categorias } from './Data/DataServicios';
 import VerCategorias from './componentesServicios/VerCategorias';
-
+import VerProveedores from './componentesServicios/VerProveedores';
+import LoginUsuario from './componentesUsuarios/LoginUsuario';
+//import RegistrarUsuario from './componentes/RegistrarUsuario';
 
 function App() {
   const categorias = Categorias()
@@ -33,7 +35,8 @@ function App() {
       <Route path='/ViewLogin' exact component={ViewLogin}/>
       <br/>
       <br/>
-      
+      {/* <Route path='/RegistrarUsuario' exact component={RegistrarUsuario}/> */}
+      <Route path='/LoginUsuario' exact component={LoginUsuario}/>
       <Route exact path="/">
       <Thecategorias onClick={(index)=>handleCategorias(index)}/>
       </Route>
@@ -47,6 +50,9 @@ function App() {
 
       <Route path= "/vercategorias">
       <VerCategorias  />
+      </Route>
+      <Route path= "/verproveedores">
+      <VerProveedores  />
       </Route>
 
       <Footer/>

@@ -95,8 +95,8 @@ const Thecategorias = props => {
       </div> 
 
       <div className="card-name">
-        <h2>{item.nombre}</h2>
-        <p>{item.descripcion}  </p>
+        <h4>{item.nombre}</h4>
+        <p> {item.descripcion}  </p>
       </div>
 
     </div>

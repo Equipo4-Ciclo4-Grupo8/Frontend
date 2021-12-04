@@ -40,9 +40,9 @@ const ServiciosOfertados =  props => {
              </div>
       
              <div className="card-descripcion">
-                 <h3>{item.servicio.nombre}</h3>
-                 <h2 className="profesion">{item.servicio.profesion} </h2>
-                 <h3> $|Hora: {item.servicio.precio} COP </h3>
+                 <h5>{item.servicio.nombre}</h5>
+                 <h4 className="profesion">{item.servicio.profesion} </h4>
+                 <h5> $|Hora: {item.servicio.precio} COP </h5>
                  <p>Calificación : {item.servicio.calificacion}</p>
                  <a href={linkWa} target="_blank">
                         <img src="https://i.ibb.co/8zM5PVq/wa.png" width="50" height="50"/>
