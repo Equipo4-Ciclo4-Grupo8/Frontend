@@ -34,6 +34,7 @@ export default function Editable() {
 
 
     const [columns, setColumns] = useState([
+      { title: 'Codigo', field: 'codigo', initialEditValue: 'solo numeros' },
       { title: 'Nombre', field: 'nombre', initialEditValue: 'Poner en MAYUS' },
       { title: 'Descripcion', field: 'descripcion', initialEditValue: 'palabras claves' },
       { title: 'Foto', field: 'foto' },
