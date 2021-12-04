@@ -10,7 +10,7 @@ export default function ViewLogin() {
       <Card>
         <Card.Img variant="top" src="./profile.png" style={{ width: '14rem', display: 'block', margin: 'auto' }} />
         <Card.Body>
-          <Card.Title className='text-center'>Cliente</Card.Title>
+          <Card.Title className='text-center'>Cliente/LoginUsuario</Card.Title>
           <Card.Text>
             Acceso a Perfil Cliente Registrado.
           </Card.Text>
