@@ -38,10 +38,9 @@ function App() {
       {/* <Route path='/RegistrarUsuario' exact component={RegistrarUsuario}/> */}
       <Route path='/LoginUsuario' exact component={LoginUsuario}/>
       <Route exact path="/">
+
       <Thecategorias onClick={(index)=>handleCategorias(index)}/>
       </Route>
-      
-
       <Route path= "/servicios">
       <div className="seccion-servicios"> 
       <ServiciosOfertados nombreCategoria={nombreCategoria}  />

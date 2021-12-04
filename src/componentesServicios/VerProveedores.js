@@ -4,25 +4,35 @@ import MaterialTable from 'material-table'
 import Axios from 'axios'
 import Swal from 'sweetalert2'
 import { Categorias } from '../Data/DataServicios';
+
 function Editable() {
     //data
+   
     const [data, setData] = useState([ ]);
-    const [categoriasOpciones, setcategoriasOpciones] = useState({1: 'TÉCNICOS', 2: 'TUTORES', 3: 'ENTRENADORES', 4: 'DEPORTISTAS'}) //reasignamos para meter el objeto en la tabla 'lookup'
-    console.log("inicio") ; console.log(categoriasOpciones)
+    const [categoriasOpciones, setcategoriasOpciones] = useState({'61ab906e55d08fb89fd9fe70': 'TÉCNICOS', "161ab903755d08fb89fd9fe6d": 'TUTORES', '61ab90ac55d08fb89fd9fe73': 'ENTRENADORES', '': 'DEPORTISTAS'}) //reasignamos para meter el objeto en la tabla 'lookup'
+    
 
     useEffect(() => {
-        listarProveedores() 
-        }, []);
-    useEffect(() => {
-        const categorias = Categorias()//trae las categorias activas
+        listarProveedores() ;
+
+        listarCategorias()
+
+        }, );
+   
+      const listarCategorias= async (e)=>{
+        e.preventDefault()
         const status={}
-        categorias.map(item => status[item.codigo] = item.nombre ) 
-        setcategoriasOpciones(status)
+        await Axios.get('/categoria/listActivos').then(response=>{
+          response.data.map(item => status[item._id] = item.nombre ) 
+          setcategoriasOpciones(status)
+          console.log('final')
+          console.log(categoriasOpciones)
+          console.log(response.data)
+        }
+        )
         
-          }, [])
-
-    
-    
+        
+      }
       //peticion GET, listamos proveedores
       const listarProveedores= async()=>{ 
         // const token = sessionStorage.getItem('token') para la Auth
@@ -86,18 +96,17 @@ function Editable() {
       return true
     }},
 
-     { title: 'PRECIOxHORA', field: 'precioxhora',validate:rowData=>{
-        if(rowData.precioxhora===undefined || rowData.precioxhora===""){
-        
-      }else if (!rowData.precioxhora.includes('$')){
-        return "Escriba el precio por hora COP del servicio, sin signos"
-      }
-      return true
-    }},
+     { title: 'PRECIOxHORA', field: 'precioxhora'
+    //  validate:rowData=>{
+    //     if (rowData.precioxhora.includes('.')){
+    //     return "Escriba el precio por hora COP del servicio, sin signos"
+    //   }
+    //   return true}
+    },
 
       { title: 'CALIFICACIÓN', field: 'calificacion.$numberDecimal'},
       
-      {title: 'CATEGORÍA',field: 'categoria.codigo', lookup:categoriasOpciones
+      {title: 'CATEGORÍA',field: 'categoria._id', lookup:categoriasOpciones
       },
 
       { title: 'CELULAR', field: 'celular', validate:rowData=>{
@@ -163,7 +172,7 @@ function Editable() {
         columns={columns}
         data={data}
         options={{
-            actionsColumnIndex:-1,
+            actionsColumnIndex:0,
             initialPage:1,
            
           }}
@@ -175,38 +184,92 @@ function Editable() {
             },
           }}
 
-        editable={{
-          onRowAdd: newData =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                setData([...data, newData]);
+          editable={{
+
+            //Peticion ADD
+            onRowAdd: newData =>
+              new Promise((resolve, reject) => {
+                const respuesta =  Axios.post('/proveedores/add',newData)
+                .then(
+                  response=>{
+                  console.log(response.data)
+                  setTimeout(() => {
+                  setData([...data, newData]);
+                  resolve();   }, 1000)
+                })
+                .catch(error=>{
+                  console.log(error.response)
+                  Swal.fire({
+                    icon: "error",
+                    title: error.response.data.message,
+                    showConfirmButton: false,
+                    timer: 3000 })
+                    resolve()
+                  return error.response
+                })
                 
-                resolve();
-              }, 1000)
-            }),
-          onRowUpdate: (newData, oldData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataUpdate = [...data];
-                const index = oldData.tableData.id;
-                dataUpdate[index] = newData;
-                setData([...dataUpdate]);
+                
+              }),
+            //Metodo actualizar  
+            onRowUpdate: (newData, oldData) =>
+              new Promise((resolve, reject) => {
+                
+                const actualizar =  Axios.put('/proveedores/actualizar',newData).then(
+                response=>{  
+                  console.log(response.data)
+                  setTimeout(() => {
+                  const dataUpdate = [...data];
+                  const index = oldData.tableData.id;
+                  dataUpdate[index] = newData;
+                  setData([...dataUpdate]);
+    
+                  resolve();
+                }, 1000)
+                } ).catch(error=>{
+                  console.log(error.response)
+                  Swal.fire({
+                    icon: "error",
+                    title: error.response.data.message ,
+                    showConfirmButton: false,
+                    timer: 6000 })
+                    resolve()
+                  return error.response
+                })
+              }
+              ),
   
-                resolve();
-              }, 1000)
-            }),
-          onRowDelete: oldData =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataDelete = [...data];
-                const index = oldData.tableData.id;
-                dataDelete.splice(index, 1);
-                setData([...dataDelete]);
+            //Peticion Borrar registro  
+            onRowDelete: oldData =>
+              new Promise((resolve, reject) => {
+                const index = oldData.tableData.id
+                const eliminar =  Axios.delete('/proveedores/borrar',{ data:{_id:data[index]._id} }) // es necesario enviarlo adentro de un objeto 'data'
+                .then(
+                  response=>{
+                  console.log(response.data)
+                  setTimeout(() => {
+                    const dataDelete = [...data];
+                    const index = oldData.tableData.id;
+                    dataDelete.splice(index, 1);
+                    setData([...dataDelete]);
+    
+                    resolve()
+                  }, 1000)
+                }).catch(error=>{
+                  console.log(error.response)
+                  Swal.fire({
+                    icon: "error",
+                    title: error.response.data.message + data[index]._id,
+                    showConfirmButton: false,
+                    timer: 6000 })
+                    resolve()
+                  return error.response
+                })
+  
                 
-                resolve()
-              }, 1000)
-            }),
-        }}
+  
+  
+              }),
+          }}
       />
       </div>
     )

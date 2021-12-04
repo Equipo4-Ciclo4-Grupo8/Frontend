@@ -61,12 +61,12 @@ const Thecategorias = props => {
   useEffect(() => {
     filtroCategorias()
     
-  }, [])
+  },[] )
   
   //METODO Listar con filtro por valor de busqueda, si es vacio lista todas las categorias 'activas'
    const filtroCategorias= async()=>{ 
      //const token = sessionStorage.getItem('token')  para la Auth
-     const respuesta = await Axios.get('/categoria/list',{ headers: { filtro: valorBusqueda } } 
+     const respuesta = await Axios.get('/categoria/listxfiltro',{ headers: { filtro: valorBusqueda } } 
      ).then(response=>{
        setcategorias(response.data)
        console.log(response.data)
