@@ -37,6 +37,7 @@ function App() {
       <br/>
       {/* <Route path='/RegistrarUsuario' exact component={RegistrarUsuario}/> */}
       <Route path='/LoginUsuario' exact component={LoginUsuario}/>
+      <Route path='/RegistrarUsuario' exact component={RegistrarUsuario}/>
       <Route exact path="/">
 
       <Thecategorias onClick={(index)=>handleCategorias(index)}/>
