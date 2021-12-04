@@ -14,7 +14,7 @@ import { Categorias } from './Data/DataServicios';
 import VerCategorias from './componentesServicios/VerCategorias';
 import VerProveedores from './componentesServicios/VerProveedores';
 import LoginUsuario from './componentesUsuarios/LoginUsuario';
-//import RegistrarUsuario from './componentes/RegistrarUsuario';
+import RegistrarUsuario from './componentes/RegistrarUsuario';
 
 function App() {
   const categorias = Categorias()
